@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form>
+    <input type="file" id="uploadFile" name="file">
+</form>
+</body>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#uploadFile').on('change',function(e){
+        var file = this.files[0];
+
+        var formData = new FormData();
+        formData.append('file',file);
+
+        $.ajax({
+            url: '/webgl/upload/zip',
+            type: 'post',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(res){
+                //
+            }
+        })
+    })
+</script>
+</html>
